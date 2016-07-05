@@ -25,6 +25,9 @@ branch=pyro.extended=,print=rTorrent-PS\\\ features\\\ active!,print=rTorrent-PS
 # COMMAND: Return startup time (can be used to calculate uptime)
 system.method.insert = startup_time,value|const,$system.time=
 
+# COMMAND: Import specified conf file as a parameter from "~/.pyroscope/" directory
+method.insert = pyro.import, simple, "import=(cat,\"~/.pyroscope/\",(argument.0))"
+
 # EVENTS: Timestamps
 #   tm_loaded = time loaded into client
 #   tm_started = time of *first* start
@@ -136,3 +139,28 @@ schedule2 = last_scrape_t, 300, 300, "d.multicall2=main,\"branch=\\\"or={d.up.ra
 branch=pyro.extended=,"schedule2 = bind_send_scrape,0,0,\"ui.bind_key=download_list,#,d.last_scrape.send_set=\""
 
 ### end: Sending scrape requests ###
+
+
+### begin: Defining and including color themes ###
+
+# COMMAND: Defining selectable color theme configs
+method.insert = cfg.theme.0, string|const|private, (cat,"color_scheme256.rc")
+method.insert = cfg.theme.1, string|const|private, (cat,"color_scheme256-happy_pastel.rc")
+method.insert = cfg.theme.2, string|const|private, (cat,"color_scheme256-solarized_yellow.rc")
+method.insert = cfg.theme.3, string|const|private, (cat,"color_scheme256-solarized_blue.rc")
+
+# COMMAND: Setting default theme config
+method.insert = pyro.theme.selected, string|private, (cat,(cfg.theme.1))
+
+# IMPORT: Import default color theme from external config
+pyro.import = (pyro.theme.selected)
+
+# UI/KEY: Bind '|' to TOGGLE selectable THEMES defined at the top of this config
+method.insert = pyro.theme.store_set, simple|private, "pyro.import=$cat=$argument.0= ;pyro.theme.selected.set=$argument.0="
+method.insert = pyro.theme.toggle2, simple|private, "branch=\"equal={pyro.theme.selected=,cfg.theme.2=}\",pyro.theme.store_set=$cfg.theme.3=,pyro.theme.store_set=$cfg.theme.0="
+method.insert = pyro.theme.toggle1, simple|private, "branch=\"equal={pyro.theme.selected=,cfg.theme.1=}\",pyro.theme.store_set=$cfg.theme.2=,pyro.theme.toggle2="
+method.insert = pyro.theme.toggle0, simple|private, "branch=\"equal={pyro.theme.selected=,cfg.theme.0=}\",pyro.theme.store_set=$cfg.theme.1=,pyro.theme.toggle1="
+branch=pyro.extended=,"schedule2 = bind_toggle_theme,0,0,\"ui.bind_key=download_list,|,pyro.theme.toggle0=\""
+
+### end: Defining and including color themes ###
+
