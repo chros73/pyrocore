@@ -45,3 +45,18 @@ mailing list or the inofficial ``##rtorrent`` channel on ``irc.freenode.net``.
 ``13–Mar–2010`` | [pyrocore 0.3.1](http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.3.1) released, adding filtering, sorting and output formatting to `rtcontrol`.
 ``08–Mar–2010`` | [pyrocore 0.2.1](http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.2.1) released, with new tools `chtor` and `pyroadmin`, and a finished configuration system.
 ``19–Feb–2010`` | First release of `pyrocore` ([v0.1.1](http://pypi.python.org/pypi?:action=display&name=pyrocore&version=0.1.1)), containing the `lstor` and `mktor` utilities.
+
+
+## Fork Notes
+
+This fork is a set of small fixes and enhancements in rtorrent config file.
+
+### Change Log
+
+- ``09-Jul-2016``
+ * Modify filtering, sorting in rtorrent config ([#6](https://github.com/chros73/pyrocore/issues/6))
+ * Adding ability to use tm_downloaded timestamp custom variable in rtorrent config ([#5](https://github.com/chros73/pyrocore/issues/5))
+ * Bind key to toggle through selectable themes in rtorrent config ([#4](https://github.com/chros73/pyrocore/issues/4))
+ * Bind key to send scrape request manually ([#3](https://github.com/chros73/pyrocore/issues/3))
+ * Regularly send scrape request to trackers ([#2](https://github.com/chros73/pyrocore/issues/2))
+ * Fix timestamp bugs in rtorrent config file and add a general method to display them ([#1](https://github.com/chros73/pyrocore/issues/1))
