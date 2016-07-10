@@ -53,6 +53,8 @@ This fork is a set of small fixes and enhancements in rtorrent config file.
 
 ### Change Log
 
+- ``10-Jul-2016``
+ * Refactor tm_downloaded methods ([#8](https://github.com/chros73/pyrocore/issues/8))
 - ``09-Jul-2016``
  * Modify filtering, sorting in rtorrent config ([#6](https://github.com/chros73/pyrocore/issues/6))
  * Adding ability to use tm_downloaded timestamp custom variable in rtorrent config ([#5](https://github.com/chros73/pyrocore/issues/5))
