@@ -49,10 +49,12 @@ mailing list or the inofficial ``##rtorrent`` channel on ``irc.freenode.net``.
 
 ## Fork Notes
 
-This fork is a set of small fixes and enhancements in rtorrent config file.
+This fork is a set of small fixes and enhancements in rtorrent config file and template files.
 
 ### Change Log
 
+- ``21-Jul-2016``
+ * Include human readable data size info in orphans template ([#9](https://github.com/chros73/pyrocore/issues/9))
 - ``10-Jul-2016``
  * Refactor tm_downloaded methods ([#8](https://github.com/chros73/pyrocore/issues/8))
 - ``09-Jul-2016``
